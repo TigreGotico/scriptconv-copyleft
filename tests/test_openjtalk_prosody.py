@@ -7,10 +7,11 @@ that checkout with pyopenjtalk-plus 0.4.1.post10. Each expected value is
     JapanesePhonemizer().phonemize(text)
 
 with ``from piper.phonemize_japanese import JapanesePhonemizer``. The readings
-come from the OpenJTalk dictionary, so the test extra installs pyopenjtalk-plus,
-the distribution that Piper uses. With pyopenjtalk 0.4.1, which the
-``ja-phonemizers`` extra installs, 993 of 1033 parity sentences get other
-readings, so most rows here fail.
+come from the OpenJTalk dictionary, so the test extra installs pyopenjtalk-plus
+with onnxruntime, as Piper does. Without onnxruntime, pyopenjtalk-plus turns
+off its model for the reading of 何 and reads 何時 as なにじ. With pyopenjtalk
+0.4.1, which the ``ja-phonemizers`` extra installs, 993 of 1033 parity
+sentences get other readings, so most rows here fail.
 """
 from importlib import metadata
 
