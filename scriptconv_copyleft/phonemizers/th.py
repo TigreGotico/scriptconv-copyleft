@@ -11,7 +11,9 @@ two words, and the punctuation marks ``. , ? ! : ; -`` stay as symbols.
 
 The backend reads numbers itself: Thai digits become Arabic digits, and
 unicode-rbnf writes each number as Thai words, with ``฿`` read as บาท and
-``%`` as เปอร์เซ็นต์. TLTK does not read digits.
+``%`` as เปอร์เซ็นต์. TLTK does not read digits. A number counts only at
+the start of a word, so digits that follow a letter with no space, as in
+``โควิด19`` or ``A4``, are dropped with a warning, as Piper drops them.
 """
 
 import logging

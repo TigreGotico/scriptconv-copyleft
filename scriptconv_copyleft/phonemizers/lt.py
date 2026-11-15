@@ -257,9 +257,8 @@ class EspeakLithuanianAccentPhonemizer(EspeakPhonemizer):
                 self._cache.clear()
             ipa = super().phonemize_string(word, ESPEAK_VOICE)
             ipa = unicodedata.normalize("NFD", _LANG_FLAGS.sub("", ipa)).strip()
-            # espeak-ng 1.52.0 writes ʂ for some s that the espeak-ng commit
-            # Piper builds (724808c) writes as s (Fisichella, Estrellas).
-            # Lithuanian has no ʂ.
+            # espeak-ng writes ʂ for some s (Fisichella, Estrellas). Lithuanian
+            # has no ʂ, and Piper writes it as s.
             ipa = ipa.replace("ʂ", "s")
             self._cache[word] = ipa
         return ipa

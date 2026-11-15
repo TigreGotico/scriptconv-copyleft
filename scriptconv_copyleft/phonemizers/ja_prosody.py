@@ -16,12 +16,22 @@ The prosody symbols:
 - ``,`` pause (OpenJTalk ``pau``, for example from 、)
 - ``.`` end of a declarative sentence
 - ``?`` end of an interrogative sentence
+
+The engine is pyopenjtalk-plus with onnxruntime, as in Piper. pyopenjtalk
+installs the same ``pyopenjtalk`` module with another dictionary and other
+accent rules, and pyopenjtalk-plus without onnxruntime turns off its model for
+the reading of 何. Both give other phonemes, so the backend refuses to run with
+either of them.
 """
 
+import base64
+import hashlib
+import importlib.util
 import logging
 import re
 from collections.abc import Iterator
 from importlib import metadata
+from pathlib import Path
 
 from scriptconv.phonemizers.base import BasePhonemizer, _check_alphabet
 from scriptconv.phonemizers.enums import Alphabet
@@ -137,6 +147,23 @@ def split_sentences(text: str) -> list[str]:
     return sentences
 
 
+def module_distribution(module: str, module_file: str) -> str | None:
+    """The distribution whose installed files hold *module_file*.
+
+    Two distributions can both list the module's files in their RECORD, when
+    both are installed. The one whose recorded sha256 matches the file on disk
+    is the one installed last, whose code runs.
+    """
+    path = Path(module_file).resolve()
+    digest = base64.urlsafe_b64encode(hashlib.sha256(path.read_bytes()).digest()).rstrip(b"=").decode()
+    for name in metadata.packages_distributions().get(module, []):
+        for file in metadata.distribution(name).files or ():
+            if (file.hash is not None and file.hash.mode == "sha256" and file.hash.value == digest
+                    and Path(file.locate()).resolve() == path):
+                return name
+    return None
+
+
 class OpenJTalkProsodyPhonemizer(BasePhonemizer):
     """OpenJTalk readings in IPA, with accent rise, fall and phrase marks.
 
@@ -145,9 +172,12 @@ class OpenJTalkProsodyPhonemizer(BasePhonemizer):
 
     Two distributions install the ``pyopenjtalk`` module: pyopenjtalk and
     pyopenjtalk-plus. Their dictionaries and accent rules differ, so the
-    readings differ too. Piper uses pyopenjtalk-plus, and
-    :meth:`identity` names the distribution that is installed.
+    readings differ too. The backend runs only when the module comes from
+    pyopenjtalk-plus and onnxruntime is installed, so that :meth:`identity`
+    names the engine that gives the phonemes.
     """
+
+    engine_distribution = "pyopenjtalk-plus"
 
     def __init__(self, alphabet: Alphabet = Alphabet.IPA, drop_devoiced_vowels: bool = True):
         """
@@ -156,13 +186,24 @@ class OpenJTalkProsodyPhonemizer(BasePhonemizer):
                 voiced vowel. The context predicts most devoicing.
         """
         _check_alphabet(self, alphabet, [Alphabet.IPA])
+        install = "Install it with 'pip install scriptconv[ja-prosody]'."
         try:
             import pyopenjtalk
         except ImportError as e:
             raise ImportError(
-                "pyopenjtalk is required for the OpenJTalk prosody phonemizer. "
-                "Install it with 'pip install scriptconv[ja-phonemizers]'."
+                f"pyopenjtalk-plus is required for the OpenJTalk prosody phonemizer. {install}"
             ) from e
+        owner = module_distribution("pyopenjtalk", pyopenjtalk.__file__)
+        if owner != self.engine_distribution:
+            raise ImportError(
+                f"The OpenJTalk prosody phonemizer needs pyopenjtalk-plus, but the installed "
+                f"pyopenjtalk module comes from {owner or 'an unknown distribution'}. {install}"
+            )
+        if importlib.util.find_spec("onnxruntime") is None:
+            raise ImportError(
+                "The OpenJTalk prosody phonemizer needs onnxruntime, which pyopenjtalk-plus "
+                f"uses to read 何. {install}"
+            )
         self.pyopenjtalk = pyopenjtalk
         self.drop_devoiced_vowels = drop_devoiced_vowels
         super().__init__(alphabet)
@@ -170,10 +211,6 @@ class OpenJTalkProsodyPhonemizer(BasePhonemizer):
     @classmethod
     def get_lang(cls, target_lang: str) -> str:
         return cls.match_lang(target_lang, ["ja"])
-
-    def _engine_release(self) -> tuple[str, str]:
-        distribution = metadata.packages_distributions()["pyopenjtalk"][0]
-        return distribution, metadata.version(distribution)
 
     def openjtalk_phones(self, sentence: str) -> list[str]:
         """OpenJTalk phones and prosody symbols of one sentence, before the IPA mapping."""

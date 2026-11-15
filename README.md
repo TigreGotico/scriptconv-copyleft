@@ -41,8 +41,8 @@ This package depends on scriptconv. scriptconv never imports this package when i
 The four backends from Piper (OHF-Voice/piper1-gpl) each give one more language a phoneme set with its prosody:
 
 - `hebrew_ipa` reads Hebrew text that carries niqqud and gives Modern Israeli Hebrew IPA with the stress mark. It adds no niqqud, so the diacritize stage runs before it.
-- `openjtalk_prosody` gives Japanese IPA from OpenJTalk, with the accent rise `↑`, the accent fall `↓`, the accent phrase boundary `#`, the pause `,` and the sentence ends `.` and `?`. It needs the `ja-phonemizers` extra.
-- `tltk` gives Thai IPA from TLTK, with a tone digit from 1 to 5 after each syllable. It reads numbers itself with unicode-rbnf. It needs the `th` extra.
+- `openjtalk_prosody` gives Japanese IPA from OpenJTalk, with the accent rise `↑`, the accent fall `↓`, the accent phrase boundary `#`, the pause `,` and the sentence ends `.` and `?`. It needs the `ja-prosody` extra, which installs pyopenjtalk-plus with onnxruntime. It refuses to run when the `pyopenjtalk` module comes from pyopenjtalk, or when onnxruntime is missing, because both give other readings.
+- `tltk` gives Thai IPA from TLTK, with a tone digit from 1 to 5 after each syllable. It reads numbers itself with unicode-rbnf. It drops digits that follow a letter with no space, for example `โควิด19` or `A4`, and logs a warning. It needs the `th` extra.
 - `espeak_lt_accent` gives Lithuanian espeak-ng IPA with the three pitch accents (`ˈ`, `ˌ`, `ˋ`) from a stress dictionary of 189,262 words. It needs the `espeak` extra and the espeak-ng binary.
 
 `scriptconv_copyleft.readings` holds the Japanese kanji-to-kana respelling (`tokens`, `to_hiragana`, `to_katakana`), which needs pykakasi.
