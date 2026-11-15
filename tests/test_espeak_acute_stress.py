@@ -167,3 +167,24 @@ def test_a_stressed_monosyllable_keeps_its_stress_in_a_sentence(lang, text, word
 ])
 def test_other_text_reaches_espeak_unchanged(lang, voice, text):
     assert EspeakPhonemizer().phonemize_string(text, lang) == espeak(text, voice)
+
+
+@pytest.mark.parametrize("lang", ["ru", "ru-RU", "rus", "uk", "uk-UA"])
+def test_the_binary_path_reads_the_mark_in_russian_and_ukrainian(monkeypatch, lang):
+    monkeypatch.setattr(EspeakPhonemizer, "_binary_available", True)
+    assert EspeakPhonemizer().reads_stress_mark(lang)
+
+
+@pytest.mark.parametrize("lang", ["be", "bg", "kk", "uz", "pt-PT"])
+def test_the_binary_path_does_not_read_the_mark_in_other_languages(monkeypatch, lang):
+    monkeypatch.setattr(EspeakPhonemizer, "_binary_available", True)
+    assert not EspeakPhonemizer().reads_stress_mark(lang)
+
+
+@pytest.mark.parametrize("lang", ["ru", "uk"])
+def test_espyak_does_not_read_the_mark(monkeypatch, lang):
+    # espyak gets the text unchanged, and the mark moves the stress: Но́вая -> nʌvˈɑja
+    monkeypatch.setattr(EspeakPhonemizer, "_binary_available", True)
+    assert not EspeakPhonemizer(prefer_espyak=True).reads_stress_mark(lang)
+    monkeypatch.setattr(EspeakPhonemizer, "_binary_available", False)
+    assert not EspeakPhonemizer().reads_stress_mark(lang)

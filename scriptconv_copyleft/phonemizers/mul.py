@@ -174,7 +174,7 @@ class EspeakPhonemizer(BasePhonemizer):
 
     engine_distribution = "espeak-ng"
     # The acute after a vowel becomes an espeak-ng stress position only in these
-    # languages; scriptconv removes the mark before the other languages reach espeak-ng.
+    # languages, and only on the binary path (see reads_stress_mark).
     stress_mark_langs = _ACUTE_STRESS_LANGS
     ESPEAK_LANGS = ['es-419', 'ca', 'qya', 'ga', 'et', 'ky', 'io', 'fa-latn', 'en-gb', 'fo', 'haw', 'kl',
                     'ta', 'ml', 'gd', 'sd', 'es', 'hy', 'ur', 'ro', 'hi', 'or', 'ti', 'ca-va', 'om', 'tr', 'pa',
@@ -219,6 +219,16 @@ class EspeakPhonemizer(BasePhonemizer):
         # eSpeak NG text-to-speech: 1.52.0  Data at: ...
         banner = self._run_espeak_command(["--version"])
         return self.engine_distribution, banner.split(":")[1].split()[0]
+
+    def reads_stress_mark(self, lang: str) -> bool:
+        """True when the espeak-ng binary reads the text and *lang* is one of :attr:`stress_mark_langs`.
+
+        Only the binary path turns the acute into a stress position. espyak gets the
+        text unchanged, and there the mark moves the stress off the marked vowel.
+        """
+        if self.prefer_espyak or not self._has_binary():
+            return False
+        return self._match_lang(lang, sorted(self.stress_mark_langs))[1] <= 10
 
     @classmethod
     def _has_binary(cls) -> bool:
