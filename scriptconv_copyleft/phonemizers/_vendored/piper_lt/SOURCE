@@ -1,0 +1,15 @@
+lt_kirciai.tsv    - Lithuanian stress dictionary (word, vowel group index, pitch accent mark,
+                    optional IPA vowel group index where espeak-ng splits a diphthong).
+lt_raides.tsv     - letter names espeak-ng gets wrong when a word is spelled out
+                    (own work, GPL-3.0 like the rest of piper1-gpl).
+lt_kreipiniai.tsv - nouns that occur as direct address, for the vocative accent rule
+                    (own work, GPL-3.0 like the rest of piper1-gpl).
+
+Built from two CC-BY-4.0 sources:
+  https://huggingface.co/datasets/meldynamics/liepa-tts   LIEPA corpus annotation (Vilnius University)
+  https://github.com/svogunas/g2p-lt-lexicon               pronunciation lexicon (Arunas Smaliukas)
+
+Build script and manual corrections: https://github.com/RobertasTa/reginute (sudaryk_zodyna.py)
+
+Copied from piper1-gpl at commit d76f335d9eb5dea5ef6d7d70b2d6114e6303fa08:
+  https://github.com/OHF-Voice/piper1-gpl/tree/d76f335d9eb5dea5ef6d7d70b2d6114e6303fa08/src/piper/lithuanian
