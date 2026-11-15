@@ -35,15 +35,30 @@ class EspeakError(Exception):
 # sentence, so a French voice reads "d'aujourd'hui" as English. Respell each of
 # them as French text espeak-ng reads correctly (checked against espeak-ng 1.52.0):
 # "de aujourd'hui" -> də oʒuʁdyˈi, "grand-mère" -> ɡʁˈɑ̃mˈɛʁ, "prud-homme" -> pʁˈydˈɔm.
+def _elide_d(match: "re.Match[str]") -> str:
+    """"d'aujourd'hui" -> "de aujourd'hui", keeping the case the text was written in."""
+    word = match.group(0)
+    return ("DE " if word.isupper() else word[0] + "e ") + word[2:].replace("\u2019", "'")
+
+
+def _hyphenate(match: "re.Match[str]") -> str:
+    """"grand'mère" -> "grand-mère" (the apostrophe becomes a hyphen; the letters keep their case)."""
+    return match.group(1) + "-" + match.group(2)
+
+
 _FRENCH_ENGLISH_SWITCH_FIXES = (
-    (re.compile(r"\b([Dd])['\u2019]aujourd['\u2019]hui\b"), r"\1e aujourd'hui"),
-    (re.compile(r"\b([Gg])rand['\u2019](m[\u00e8e]res?)\b"), r"\1rand-\2"),
-    (re.compile(r"\b([Pp])rud['\u2019](hommes?)\b"), r"\1rud-\2"),
+    (re.compile(r"\bd['\u2019]aujourd['\u2019]hui\b", re.IGNORECASE), _elide_d),
+    (re.compile(r"\b(grand)['\u2019](m[\u00e8e]res?)\b", re.IGNORECASE), _hyphenate),
+    (re.compile(r"\b(prud)['\u2019](hommes?)\b", re.IGNORECASE), _hyphenate),
 )
 
 
 def _respell_for_espeak(text: str, lang: str) -> str:
-    """Respell the few words espeak-ng mistakes for English in a French text."""
+    """Respell the few words espeak-ng mistakes for English in a French text.
+
+    The match ignores case, so a heading in capitals ("D'AUJOURD'HUI", "GRAND'MÈRE") gets
+    the same treatment; the replacement keeps whatever case each letter had.
+    """
     if lang.split("-")[0].lower() != "fr":
         return text
     for pattern, replacement in _FRENCH_ENGLISH_SWITCH_FIXES:
@@ -173,6 +188,9 @@ class EspeakPhonemizer(BasePhonemizer):
     """
 
     engine_distribution = "espeak-ng"
+    # The acute after a vowel becomes an espeak-ng stress position only in these
+    # languages, and only on the binary path (see reads_stress_mark).
+    stress_mark_langs = _ACUTE_STRESS_LANGS
     ESPEAK_LANGS = ['es-419', 'ca', 'qya', 'ga', 'et', 'ky', 'io', 'fa-latn', 'en-gb', 'fo', 'haw', 'kl',
                     'ta', 'ml', 'gd', 'sd', 'es', 'hy', 'ur', 'ro', 'hi', 'or', 'ti', 'ca-va', 'om', 'tr', 'pa',
                     'smj', 'mk', 'bg', 'cv', "fr", 'fi', 'en-gb-x-rp', 'ru', 'mt', 'an', 'mr', 'pap', 'vi', 'id',
@@ -216,6 +234,16 @@ class EspeakPhonemizer(BasePhonemizer):
         # eSpeak NG text-to-speech: 1.52.0  Data at: ...
         banner = self._run_espeak_command(["--version"])
         return self.engine_distribution, banner.split(":")[1].split()[0]
+
+    def reads_stress_mark(self, lang: str) -> bool:
+        """True when the espeak-ng binary reads the text and *lang* is one of :attr:`stress_mark_langs`.
+
+        Only the binary path turns the acute into a stress position. espyak gets the
+        text unchanged, and there the mark moves the stress off the marked vowel.
+        """
+        if self.prefer_espyak or not self._has_binary():
+            return False
+        return self._match_lang(lang, sorted(self.stress_mark_langs))[1] <= 10
 
     @classmethod
     def _has_binary(cls) -> bool:
