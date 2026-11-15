@@ -173,6 +173,9 @@ class EspeakPhonemizer(BasePhonemizer):
     """
 
     engine_distribution = "espeak-ng"
+    # The acute after a vowel becomes an espeak-ng stress position only in these
+    # languages; scriptconv removes the mark before the other languages reach espeak-ng.
+    stress_mark_langs = _ACUTE_STRESS_LANGS
     ESPEAK_LANGS = ['es-419', 'ca', 'qya', 'ga', 'et', 'ky', 'io', 'fa-latn', 'en-gb', 'fo', 'haw', 'kl',
                     'ta', 'ml', 'gd', 'sd', 'es', 'hy', 'ur', 'ro', 'hi', 'or', 'ti', 'ca-va', 'om', 'tr', 'pa',
                     'smj', 'mk', 'bg', 'cv', "fr", 'fi', 'en-gb-x-rp', 'ru', 'mt', 'an', 'mr', 'pap', 'vi', 'id',
