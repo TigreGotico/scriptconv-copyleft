@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=77.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scriptconv-copyleft"
+dynamic = ["version"]
+description = "scriptconv phonemizer backends whose code or dependencies are copyleft (GPL, LGPL, AGPL)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0 AND GPL-3.0-only"
+license-files = ["LICENSE"]
+dependencies = ["scriptconv[phonemizers]>=0.0.4a88"]
+authors = [
+    { name = "TigreGotico", email = "contact@tigregotico.com" }
+]
+keywords = ["g2p", "phonemizer", "tts", "scriptconv", "espeak", "cotovia", "ahotts", "kog2p", "misaki", "transphone"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+[project.urls]
+Homepage = "https://github.com/TigreGotico/scriptconv-copyleft"
+Repository = "https://github.com/TigreGotico/scriptconv-copyleft"
+Issues = "https://github.com/TigreGotico/scriptconv-copyleft/issues"
+
+[tool.setuptools.packages.find]
+include = ["scriptconv_copyleft*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "scriptconv_copyleft.version.__version__"}
