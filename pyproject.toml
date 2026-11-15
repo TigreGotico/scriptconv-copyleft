@@ -9,7 +9,11 @@ description = "scriptconv phonemizer backends whose code or dependencies are cop
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0 AND GPL-3.0-only"
-license-files = ["LICENSE"]
+license-files = [
+    "LICENSE",
+    "scriptconv_copyleft/phonemizers/_vendored/kog2p/LICENSE.md",
+    "scriptconv_copyleft/phonemizers/_vendored/kog2p/COPYING",
+]
 dependencies = ["scriptconv[phonemizers]>=0.0.4a88"]
 authors = [
     { name = "TigreGotico", email = "contact@tigregotico.com" }
@@ -26,6 +30,18 @@ classifiers = [
     "Topic :: Text Processing :: Linguistic",
 ]
 
+[project.optional-dependencies]
+espeak = ["espyak"]
+transphone = ["transphone", "pip", "jieba", "pypinyin", "unidic-lite"]
+misaki = ["misaki[en,ko,zh]; python_version<'3.13'", "python-mecab-ko; python_version<'3.13'", "fugashi; python_version<'3.13'", "jaconv; python_version<'3.13'", "mojimoji; python_version<'3.13'", "pyopenjtalk; python_version<'3.13'", "unidic-lite; python_version<'3.13'", "pip; python_version<'3.13'", "spacy>=3.7,<4.0; python_version<'3.13'"]
+gl = ["pycotovia"]
+eu = ["ahotts_g2p"]
+fa = ["persian_phonemizer", "hazm>=0.10", "spacy>=3.7,<4.0"]
+ja = ["pykakasi>=2.3,<3"]
+ja-phonemizers = ["pykakasi>=2.3,<3"]
+ko = ["g2pk; python_version<'3.13'", "regex"]
+test = ["pytest", "pytest-timeout", "espyak", "pycotovia", "ahotts_g2p", "pykakasi>=2.3,<3", "epitran>=1.26.1", "g2pk; python_version<'3.13'", "regex", "misaki[en,ko]; python_version<'3.13'", "spacy>=3.7,<4.0; python_version<'3.13'", "linguatag[langcodes]>=0.2.3a1", "packaging"]
+
 [project.urls]
 Homepage = "https://github.com/TigreGotico/scriptconv-copyleft"
 Repository = "https://github.com/TigreGotico/scriptconv-copyleft"
@@ -36,3 +52,13 @@ include = ["scriptconv_copyleft*"]
 
 [tool.setuptools.dynamic]
 version = {attr = "scriptconv_copyleft.version.__version__"}
+
+[tool.setuptools.package-data]
+"scriptconv_copyleft.phonemizers._vendored.kog2p" = ["rulebook.txt", "LICENSE.md", "COPYING"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+timeout = 150
+
+[tool.ruff]
+extend-exclude = ["*/_vendored/*"]
