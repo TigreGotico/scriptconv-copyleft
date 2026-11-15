@@ -8,19 +8,19 @@ dynamic = ["version"]
 description = "scriptconv phonemizer backends whose code or dependencies are copyleft (GPL, LGPL, AGPL)"
 readme = "README.md"
 requires-python = ">=3.11"
-license = "Apache-2.0 AND GPL-3.0-only AND GPL-3.0-or-later AND CC-BY-4.0"
+license = "Apache-2.0 AND GPL-3.0-only AND CC-BY-4.0"
 license-files = [
     "LICENSE",
     "scriptconv_copyleft/phonemizers/_vendored/kog2p/LICENSE.md",
     "scriptconv_copyleft/phonemizers/_vendored/kog2p/COPYING",
-    "scriptconv_copyleft/phonemizers/_vendored/piper_lt/COPYING",
-    "scriptconv_copyleft/phonemizers/_vendored/piper_lt/LICENSE",
+    "scriptconv_copyleft/phonemizers/_vendored/reginute/COPYING",
+    "scriptconv_copyleft/phonemizers/_vendored/reginute/LICENSE",
 ]
 dependencies = ["scriptconv[phonemizers]>=0.0.4a88"]
 authors = [
     { name = "TigreGotico", email = "contact@tigregotico.com" }
 ]
-keywords = ["g2p", "phonemizer", "tts", "scriptconv", "espeak", "cotovia", "ahotts", "kog2p", "misaki", "transphone", "openjtalk", "tltk", "hebrew", "thai", "lithuanian"]
+keywords = ["g2p", "phonemizer", "tts", "scriptconv", "espeak", "cotovia", "ahotts", "kog2p", "misaki", "transphone", "lithuanian"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -35,16 +35,14 @@ classifiers = [
 [project.optional-dependencies]
 espeak = ["espyak"]
 transphone = ["transphone", "pip", "jieba", "pypinyin", "unidic-lite"]
-misaki = ["misaki[en,ko,zh]; python_version<'3.13'", "python-mecab-ko; python_version<'3.13'", "fugashi; python_version<'3.13'", "jaconv; python_version<'3.13'", "mojimoji; python_version<'3.13'", "pyopenjtalk; python_version<'3.13'", "unidic-lite; python_version<'3.13'", "pip; python_version<'3.13'", "spacy>=3.7,<4.0; python_version<'3.13'"]
+misaki = ["misaki[en,ko,zh]; python_version<'3.13'", "python-mecab-ko; python_version<'3.13'", "fugashi; python_version<'3.13'", "jaconv; python_version<'3.13'", "mojimoji; python_version<'3.13'", "pyopenjtalk-plus[onnxruntime]>=0.4.1.post10; python_version<'3.13'", "unidic-lite; python_version<'3.13'", "pip; python_version<'3.13'", "spacy>=3.7,<4.0; python_version<'3.13'"]
 gl = ["pycotovia"]
 eu = ["ahotts_g2p"]
 fa = ["persian_phonemizer", "hazm>=0.10", "spacy>=3.7,<4.0"]
 ja = ["pykakasi>=2.3,<3"]
 ja-phonemizers = ["pykakasi>=2.3,<3"]
-ja-prosody = ["pyopenjtalk-plus[onnxruntime]>=0.4.1.post10"]
 ko = ["g2pk; python_version<'3.13'", "regex"]
-th = ["tltk>=1.6.8,<1.11", "pandas>=2", "requests>=2", "unicode-rbnf>=2.4.0"]
-test = ["pytest", "pytest-timeout", "espyak", "pycotovia", "ahotts_g2p", "pykakasi>=2.3,<3", "epitran>=1.26.1", "g2pk; python_version<'3.13'", "regex", "misaki[en,ko]; python_version<'3.13'", "spacy>=3.7,<4.0; python_version<'3.13'", "linguatag[langcodes]>=0.2.3a1", "packaging", "pyopenjtalk-plus[onnxruntime]>=0.4.1.post10", "tltk>=1.6.8,<1.11", "pandas>=2", "requests>=2", "unicode-rbnf>=2.4.0"]
+test = ["pytest", "pytest-timeout", "espyak", "pycotovia", "ahotts_g2p", "pykakasi>=2.3,<3", "epitran>=1.26.1", "g2pk; python_version<'3.13'", "regex", "misaki[en,ko]; python_version<'3.13'", "spacy>=3.7,<4.0; python_version<'3.13'", "linguatag[langcodes]>=0.2.3a1", "packaging", "pyopenjtalk-plus[onnxruntime]>=0.4.1.post10"]
 
 [project.urls]
 Homepage = "https://github.com/TigreGotico/scriptconv-copyleft"
@@ -59,7 +57,7 @@ version = {attr = "scriptconv_copyleft.version.__version__"}
 
 [tool.setuptools.package-data]
 "scriptconv_copyleft.phonemizers._vendored.kog2p" = ["rulebook.txt", "LICENSE.md", "COPYING"]
-"scriptconv_copyleft.phonemizers._vendored" = ["piper_lt/*"]
+"scriptconv_copyleft.phonemizers._vendored" = ["reginute/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

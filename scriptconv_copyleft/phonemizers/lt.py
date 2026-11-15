@@ -1,9 +1,12 @@
 """Lithuanian IPA from espeak-ng, with the pitch accent from a stress dictionary.
 
-Ported from Piper's Lithuanian phonemizer:
-https://github.com/OHF-Voice/piper1-gpl/blob/d76f335d9eb5dea5ef6d7d70b2d6114e6303fa08/src/piper/phonemize_lithuanian.py
-That file is GPL-3.0-or-later, the licence of piper1-gpl, so this module is
-GPL-3.0-or-later too.
+Ported from ``phonemize_lithuanian.py`` of Reginutė by Robertas Tarasevičius:
+https://github.com/RobertasTa/reginute/blob/328d98dc236daa806ef8d85f9818cda3d67303ad/phonemize_lithuanian.py
+Reginutė's code is GPL-3.0-only, so this module is GPL-3.0-only too. The port
+leaves out Reginutė's standalone number expander (``skaiciu_pletiklis``).
+
+The phonemes come from espeak-ng (github.com/espeak-ng/espeak-ng, the 1.52.0
+binary, GPL-3.0-or-later), called through this package's espeak wrapper.
 
 espeak-ng gives the phonemes of each word, one word at a time. Then:
 
@@ -18,12 +21,12 @@ A word that is not in the dictionary keeps the stress of espeak-ng. The
 dictionary holds one entry for each spelling, so two words that differ only
 in accent (nãmo, namõ) get the same accent.
 
-The data in ``_vendored/piper_lt`` comes from the same Piper commit.
+The data in ``_vendored/reginute`` comes from the same Reginutė commit.
 ``lt_kirciai.tsv`` (the stress dictionary) is CC-BY-4.0, built from the LIEPA
 corpus annotation (Vilnius University, huggingface.co/datasets/meldynamics/liepa-tts)
 and the g2p-lt-lexicon of Arunas Smaliukas (github.com/svogunas/g2p-lt-lexicon).
 ``lt_raides.tsv`` (letter names) and ``lt_kreipiniai.tsv`` (nouns of direct
-address) are GPL-3.0-or-later. ``LICENSE`` and ``SOURCE`` in that directory
+address) are Reginutė's own work, GPL-3.0-only. ``LICENSE`` and ``SOURCE`` in that directory
 give the attribution.
 """
 
@@ -36,7 +39,7 @@ from scriptconv_copyleft.phonemizers.mul import EspeakPhonemizer
 
 ESPEAK_VOICE = "lt"
 
-DATA_DIR = Path(__file__).parent / "_vendored" / "piper_lt"
+DATA_DIR = Path(__file__).parent / "_vendored" / "reginute"
 DEFAULT_DICTIONARY_PATH = DATA_DIR / "lt_kirciai.tsv"
 DEFAULT_LETTERS_PATH = DATA_DIR / "lt_raides.tsv"
 DEFAULT_VOCATIVES_PATH = DATA_DIR / "lt_kreipiniai.tsv"
@@ -258,7 +261,7 @@ class EspeakLithuanianAccentPhonemizer(EspeakPhonemizer):
             ipa = super().phonemize_string(word, ESPEAK_VOICE)
             ipa = unicodedata.normalize("NFD", _LANG_FLAGS.sub("", ipa)).strip()
             # espeak-ng writes ʂ for some s (Fisichella, Estrellas). Lithuanian
-            # has no ʂ, and Piper writes it as s.
+            # has no ʂ, and Reginutė writes it as s.
             ipa = ipa.replace("ʂ", "s")
             self._cache[word] = ipa
         return ipa

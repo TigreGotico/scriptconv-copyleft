@@ -1,4 +1,4 @@
-"""The committed parity samples of the backends ported from Piper.
+"""The committed parity samples, with Piper's output as the reference.
 
 Each file in ``tests/data`` starts with a header line that names the source
 and the licence of the sentences and the command that made the expected
