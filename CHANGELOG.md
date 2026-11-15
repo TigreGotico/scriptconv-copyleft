@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.2a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.1.2a1) (2026-11-15)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.1.1a1...0.1.2a1)
+
+**Merged pull requests:**
+
+- fix\(espeak\): declare that espeak-ng reads the stress mark in ru and uk [\#3](https://github.com/TigreGotico/scriptconv-copyleft/pull/3) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.1.1a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.1.1a1) (2026-11-15)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.1.0a1...0.1.1a1)
