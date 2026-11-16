@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.2.0a1) (2026-11-16)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.1.2a1...0.2.0a1)
+
+**Merged pull requests:**
+
+- feat: Lithuanian pitch-accent phonemizer; misaki Japanese on pyopenjtalk-plus [\#5](https://github.com/TigreGotico/scriptconv-copyleft/pull/5) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.1.2a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.1.2a1) (2026-11-15)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.1.1a1...0.1.2a1)
