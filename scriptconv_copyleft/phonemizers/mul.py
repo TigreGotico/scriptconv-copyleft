@@ -488,6 +488,9 @@ class MisakiPhonemizer(BasePhonemizer):
             elif lang == "ja":
                 if self.g2p_ja is None:
                     from misaki.ja import JAG2P
+                    # misaki.ja imports pyopenjtalk, but the default cutlet reader
+                    # never calls it, so the OpenJTalk distribution does not change
+                    # these phonemes (tests/test_misaki_ja_reader.py).
                     self.g2p_ja = JAG2P()
                 return self.g2p_ja
             elif lang == "en-GB":
