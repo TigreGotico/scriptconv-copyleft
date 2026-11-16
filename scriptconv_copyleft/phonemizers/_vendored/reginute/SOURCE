@@ -5,12 +5,20 @@ lt_raides.tsv     - letter names espeak-ng gets wrong when a word is spelled out
 lt_kreipiniai.tsv - nouns that occur as direct address, for the vocative accent rule
                     (own work of Reginutė, GPL-3.0-only).
 
-lt_kirciai.tsv is built from two CC-BY-4.0 sources:
+lt_kirciai.tsv is CC-BY-4.0 AND GPL-3.0-only. Its entries come from two CC-BY-4.0 sources:
   https://huggingface.co/datasets/meldynamics/liepa-tts   LIEPA corpus annotation (Vilnius University)
   https://github.com/svogunas/g2p-lt-lexicon               pronunciation lexicon (Arunas Smaliukas)
-
-Build script and manual corrections: sudaryk_zodyna.py in Reginutė.
+Reginutė's build script (sudaryk_zodyna.py) merges them, and its manual corrections
+are Reginutė's own work, GPL-3.0-only like the rest of Reginutė's code.
 
 Copied from Reginutė (Robertas Tarasevičius) at commit 328d98dc236daa806ef8d85f9818cda3d67303ad:
   https://github.com/RobertasTa/reginute/tree/328d98dc236daa806ef8d85f9818cda3d67303ad
 The three files are byte-identical to lt_kirciai.tsv, lt_raides.tsv and lt_kreipiniai.tsv there.
+
+COPYING is the GPL version 3 text, byte-identical to LICENSE in Reginutė.
+
+LICENSE is the attribution notice for the two CC-BY-4.0 sources, followed by the
+CC-BY-4.0 text. Robertas Tarasevičius wrote it for his copy of these files in
+OHF-Voice/piper1-gpl (src/piper/lithuanian/LICENSE, added in commit
+1f8f445294064ca3a388aba3732601cd9ff3c804). The vendored file is byte-identical to it.
+Reginutė itself has no such notice.

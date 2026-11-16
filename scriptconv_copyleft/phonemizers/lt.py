@@ -22,9 +22,10 @@ dictionary holds one entry for each spelling, so two words that differ only
 in accent (nãmo, namõ) get the same accent.
 
 The data in ``_vendored/reginute`` comes from the same Reginutė commit.
-``lt_kirciai.tsv`` (the stress dictionary) is CC-BY-4.0, built from the LIEPA
-corpus annotation (Vilnius University, huggingface.co/datasets/meldynamics/liepa-tts)
-and the g2p-lt-lexicon of Arunas Smaliukas (github.com/svogunas/g2p-lt-lexicon).
+``lt_kirciai.tsv`` (the stress dictionary) is built from the LIEPA corpus
+annotation (Vilnius University, huggingface.co/datasets/meldynamics/liepa-tts)
+and the g2p-lt-lexicon of Arunas Smaliukas (github.com/svogunas/g2p-lt-lexicon),
+both CC-BY-4.0, with Reginutė's manual corrections, GPL-3.0-only.
 ``lt_raides.tsv`` (letter names) and ``lt_kreipiniai.tsv`` (nouns of direct
 address) are Reginutė's own work, GPL-3.0-only. ``LICENSE`` and ``SOURCE`` in that directory
 give the attribution.

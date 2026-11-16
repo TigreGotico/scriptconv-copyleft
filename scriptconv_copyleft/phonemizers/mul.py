@@ -9,8 +9,6 @@ from typing import List, Optional, Tuple
 from scriptconv.phonemizers.enums import Alphabet
 from scriptconv.phonemizers.base import BasePhonemizer, _check_alphabet
 
-from scriptconv_copyleft.phonemizers.openjtalk_engine import require_pyopenjtalk_plus
-
 
 # Hong Kong and Macau Cantonese. A bare "yue" means mainland Cantonese in
 # Simplified script, so these tags are far from it by language distance. The
@@ -470,10 +468,6 @@ class MisakiPhonemizer(BasePhonemizer):
         NOTE: this can be slow
         """
         lang = self.get_lang(lang)
-        if lang == "ja" and self.g2p_ja is None:
-            # misaki.ja imports pyopenjtalk. The identity names misaki only, so
-            # the OpenJTalk engine under it is fixed instead.
-            require_pyopenjtalk_plus("misaki's Japanese G2P", "misaki")
 
         try:
             if lang == "zh":
@@ -494,6 +488,9 @@ class MisakiPhonemizer(BasePhonemizer):
             elif lang == "ja":
                 if self.g2p_ja is None:
                     from misaki.ja import JAG2P
+                    # misaki.ja imports pyopenjtalk, but the default cutlet reader
+                    # never calls it, so the OpenJTalk distribution does not change
+                    # these phonemes (tests/test_misaki_ja_reader.py).
                     self.g2p_ja = JAG2P()
                 return self.g2p_ja
             elif lang == "en-GB":
