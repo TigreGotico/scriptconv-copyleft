@@ -42,7 +42,7 @@ fa = ["persian_phonemizer", "hazm>=0.10", "spacy>=3.7,<4.0"]
 ja = ["pykakasi>=2.3,<3"]
 ja-phonemizers = ["pykakasi>=2.3,<3"]
 ko = ["g2pk; python_version<'3.13'", "regex"]
-test = ["pytest", "pytest-timeout", "espyak", "pycotovia", "ahotts_g2p", "pykakasi>=2.3,<3", "epitran>=1.26.1", "g2pk; python_version<'3.13'", "regex", "misaki[en,ko]; python_version<'3.13'", "fugashi; python_version<'3.13'", "jaconv; python_version<'3.13'", "mojimoji; python_version<'3.13'", "unidic-lite; python_version<'3.13'", "spacy>=3.7,<4.0; python_version<'3.13'", "linguatag[langcodes]>=0.2.3a1", "packaging", "pyopenjtalk-plus[onnxruntime]>=0.4.1.post10"]
+test = ["pytest", "pytest-timeout", "espyak", "pycotovia", "ahotts_g2p", "pykakasi>=2.3,<3", "epitran>=1.26.1", "g2pk; python_version<'3.13'", "regex", "misaki[en,ko,zh]; python_version<'3.13'", "fugashi; python_version<'3.13'", "jaconv; python_version<'3.13'", "mojimoji; python_version<'3.13'", "unidic-lite; python_version<'3.13'", "spacy>=3.7,<4.0; python_version<'3.13'", "linguatag[langcodes]>=0.2.3a1", "packaging", "pyopenjtalk-plus[onnxruntime]>=0.4.1.post10"]
 
 [project.urls]
 Homepage = "https://github.com/TigreGotico/scriptconv-copyleft"

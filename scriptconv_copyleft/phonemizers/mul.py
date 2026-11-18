@@ -514,6 +514,10 @@ class MisakiPhonemizer(BasePhonemizer):
 
     def phonemize_string(self, text: str, lang: str) -> str:
         pho = self._get_phonemizer(lang)
+        if self.get_lang(lang) == "zh":
+            # misaki's zh front end keeps the zero sign 〇 (U+3007) as a symbol. Wiktionary, "〇", Chinese: "Used to
+            # express a zero digit in a number", with the sense of 零, so it reads as 零.
+            text = text.replace("\u3007", "零")
         phonemes, tokens = pho(text)
         return phonemes
 
