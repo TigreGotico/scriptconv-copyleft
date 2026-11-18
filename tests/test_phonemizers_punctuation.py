@@ -89,13 +89,21 @@ class TestDefaultKeepsNoPunctuation:
 
     def test_default_matches_the_previous_definitions(self, espeak):
         # phonemize_lazy phonemizes each chunk_text chunk with its punctuation
-        # removed, and phonemize_to_list joins those chunks
+        # removed, and joins the clauses of one sentence with a space: a
+        # chunk with its end-of-sentence flag closes the sentence.
+        # phonemize_to_list joins those sentences
         for lang, texts in MULTILINGUAL.items():
             for text in texts:
-                previous = [
-                    list(re.sub(r"\([^)]+\)", "", espeak.phonemize_string(
-                        espeak.remove_punctuation(chunk), lang)))
-                    for chunk, _, _ in espeak.chunk_text(text)]
+                previous, clauses = [], []
+                for chunk, _, sentence_end in espeak.chunk_text(text):
+                    clause = re.sub(r"\([^)]+\)", "", espeak.phonemize_string(
+                        espeak.remove_punctuation(chunk), lang))
+                    clauses += [clause] if clause else []
+                    if sentence_end:
+                        previous.append(list(" ".join(clauses)))
+                        clauses = []
+                if clauses:
+                    previous.append(list(" ".join(clauses)))
                 assert espeak.phonemize(text, lang) == previous
                 assert list(espeak.phonemize_lazy(text, lang)) == previous
                 assert espeak.phonemize_to_list(text, lang) == join_sentences(previous)
