@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.2.1a1) (2026-11-18)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.2.0a1...0.2.1a1)
+
+**Merged pull requests:**
+
+- fix: the punctuation test reads the clauses of one sentence as one list, as scriptconv 0.0.4a113 does [\#8](https://github.com/TigreGotico/scriptconv-copyleft/pull/8) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.2.0a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.2.0a1) (2026-11-16)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.1.2a1...0.2.0a1)
