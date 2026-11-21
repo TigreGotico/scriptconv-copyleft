@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.3.0a1) (2026-11-21)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.2.2a1...0.3.0a1)
+
+**Merged pull requests:**
+
+- feat: hebrew\_ipa, openjtalk\_prosody and tltk phonemizers [\#9](https://github.com/TigreGotico/scriptconv-copyleft/pull/9) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.2.2a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.2.2a1) (2026-11-18)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.2.1a1...0.2.2a1)
