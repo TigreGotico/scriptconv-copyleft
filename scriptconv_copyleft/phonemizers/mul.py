@@ -312,7 +312,12 @@ class EspeakPhonemizer(BasePhonemizer):
             EspeakError: If espeak-ng command is not found, or if the subprocess call fails.
         """
         command: List[str] = ['espeak-ng'] + args
-        
+        if input_text is not None:
+            # Without --stdin, espeak-ng reads stdin in 1,000-byte pieces and cuts a
+            # longer line mid-word. With it, espeak-ng drops the last byte of the input.
+            command.append('--stdin')
+            input_text += "\n"
+
         # Standard arguments for subprocess.run
         subprocess_args = {
             'input': input_text,
