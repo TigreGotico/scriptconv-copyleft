@@ -54,7 +54,7 @@ that their wheels hold.
 | Backend | Download | Size on disk | Destination |
 | --- | --- | --- | --- |
 | `transphone` | the phonepiece model `latest` and the transphone model `042801_base`, from GitHub releases of xinjli | 138 MB and 86 MB | `phonepiece/data/model` and `transphone/data/model` in site-packages |
-| `misaki`, `misaki_en` with English | the spaCy model `en_core_web_sm`, through `spacy.cli.download` | 15 MB | site-packages, as a package |
+| `misaki`, `misaki_en` with English, `misaki_vi` | the spaCy model `en_core_web_sm`, through `spacy.cli.download` | 15 MB | site-packages, as a package |
 | `g2pk` | the NLTK `cmudict` corpus, when NLTK does not find it | 4.6 MB (the 0.9 MB zip and its 3.7 MB unpacked copy) | `~/nltk_data` |
 
 ## espeak
@@ -164,12 +164,14 @@ The Japanese reader of misaki is cutlet on fugashi. misaki imports the
 `pyopenjtalk` module, and the `misaki` extra installs it from
 pyopenjtalk-plus, but the cutlet reader does not call it.
 
-`misaki_vi` needs underthesea, which the `misaki` extra does not install.
-Without it, the backend raises `ImportError`
-([#17](https://github.com/TigreGotico/scriptconv-copyleft/issues/17)).
+For `misaki_vi`, the `misaki` extra installs the `vi` extra of misaki, which
+pulls underthesea, and vietnam-number, which the Vietnamese text cleaner of
+misaki imports without a declaration.
 
 Licence: misaki is Apache-2.0, but its English module pulls phonemizer-fork
-(GPL-3.0-or-later) and espeakng-loader, which bundles libespeak-ng. Downloads:
+(GPL-3.0-or-later) and espeakng-loader, which bundles libespeak-ng. The
+Vietnamese module pulls underthesea (Apache-2.0) and vietnam-number
+(GPL-3.0-or-later). Downloads:
 the spaCy English model, see
 [Downloads on first use](#downloads-on-first-use).
 
