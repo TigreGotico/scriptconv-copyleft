@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.1a3](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.3.1a3) (2026-11-24)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.1a2...0.3.1a3)
+
+**Merged pull requests:**
+
+- test\(identity\): assert the g2pk revision that scriptconv gives [\#22](https://github.com/TigreGotico/scriptconv-copyleft/pull/22) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+- fix\(misaki\): install what misaki\_vi imports [\#21](https://github.com/TigreGotico/scriptconv-copyleft/pull/21) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.3.1a2](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.3.1a2) (2026-11-24)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.1a1...0.3.1a2)
