@@ -55,7 +55,7 @@ that their wheels hold.
 | --- | --- | --- | --- |
 | `transphone` | the phonepiece model `latest` and the transphone model `042801_base`, from GitHub releases of xinjli | 138 MB and 86 MB | `phonepiece/data/model` and `transphone/data/model` in site-packages |
 | `misaki`, `misaki_en` with English | the spaCy model `en_core_web_sm`, through `spacy.cli.download` | 15 MB | site-packages, as a package |
-| `g2pk` | the NLTK `cmudict` corpus, when NLTK does not find it | 0.9 MB | `~/nltk_data` |
+| `g2pk` | the NLTK `cmudict` corpus, when NLTK does not find it | 4.6 MB (the 0.9 MB zip and its 3.7 MB unpacked copy) | `~/nltk_data` |
 
 ## espeak
 
