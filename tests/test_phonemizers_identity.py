@@ -1,12 +1,13 @@
 """``PhonemizerIdentity`` for the wrappers this package holds."""
+import re
 import sys
 from importlib import metadata
 from unittest import mock
 
 import espyak.version
 import pytest
+from scriptconv.phonemizers._revision import FORMAT as REVISION_FORMAT
 
-from scriptconv.phonemizers import PhonemizerIdentity
 from scriptconv_copyleft.phonemizers.ko import G2PKPhonemizer
 from scriptconv_copyleft.phonemizers.mul import EspeakPhonemizer
 
@@ -17,8 +18,18 @@ class TestIdentity:
     @pytest.mark.skipif(sys.version_info >= (3, 13),
                         reason="python-mecab-ko has no Python 3.13 wheel")
     def test_g2pk_reports_the_installed_engine(self):
-        assert G2PKPhonemizer().identity("ko") == PhonemizerIdentity(
-            backend="g2pk", distribution="g2pk", version=metadata.version("g2pk"), lang="ko")
+        identity = G2PKPhonemizer().identity("ko")
+        assert (identity.backend, identity.distribution, identity.version, identity.lang, identity.frontend) == \
+            ("g2pk", "g2pk", metadata.version("g2pk"), "ko", None)
+        # the revision of an in-tree backend is the hash of the code on its path
+        assert re.fullmatch(rf"{REVISION_FORMAT}:[0-9a-f]{{64}}", identity.revision)
+
+    @pytest.mark.skipif(sys.version_info >= (3, 13),
+                        reason="python-mecab-ko has no Python 3.13 wheel")
+    def test_a_g2pk_release_changes_the_revision(self):
+        with mock.patch.object(G2PKPhonemizer, "_engine_release", return_value=("g2pk", "0.0.0")):
+            other = G2PKPhonemizer().identity("ko")
+        assert other.revision != G2PKPhonemizer().identity("ko").revision
 
     def test_espeak_reports_the_binary_version(self):
         banner = "eSpeak NG text-to-speech: 1.52.0  Data at: /usr/share/espeak-ng-data\n"
