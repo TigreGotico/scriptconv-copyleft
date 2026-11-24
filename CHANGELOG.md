@@ -1,8 +1,20 @@
 # Changelog
 
+## [0.3.3a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.3.3a1) (2026-11-24)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.2a1...0.3.3a1)
+
+**Merged pull requests:**
+
+- fix\(g2pfa\): pass the output format by keyword [\#20](https://github.com/TigreGotico/scriptconv-copyleft/pull/20) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.3.2a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.3.2a1) (2026-11-24)
 
-[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.1a2...0.3.2a1)
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.1a3...0.3.2a1)
+
+## [0.3.1a3](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.3.1a3) (2026-11-24)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.1a2...0.3.1a3)
 
 **Merged pull requests:**
 
