@@ -17,7 +17,7 @@ class PersianPhonemizer(BasePhonemizer):
             ) from e
         assert alphabet in [Alphabet.ERAAB, Alphabet.IPA]
         output_format = "IPA" if alphabet == Alphabet.IPA else 'eraab'
-        self.g2p = Phonemizer(output_format)
+        self.g2p = Phonemizer(output_format=output_format)
         super().__init__(alphabet)
 
     @classmethod
