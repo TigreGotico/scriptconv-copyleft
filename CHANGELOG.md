@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1a2](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.3.1a2) (2026-11-24)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.1a1...0.3.1a2)
+
+**Merged pull requests:**
+
+- docs: README, docs index, navigation and agent hints [\#19](https://github.com/TigreGotico/scriptconv-copyleft/pull/19) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.3.1a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.3.1a1) (2026-11-22)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.0a1...0.3.1a1)
