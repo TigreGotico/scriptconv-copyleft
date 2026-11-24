@@ -1,8 +1,8 @@
 # Changelog
 
-## [0.3.1a3](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.3.1a3) (2026-11-24)
+## [0.3.2a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.3.2a1) (2026-11-24)
 
-[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.1a2...0.3.1a3)
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.1a2...0.3.2a1)
 
 **Merged pull requests:**
 
