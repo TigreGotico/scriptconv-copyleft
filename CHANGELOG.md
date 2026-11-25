@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0a3](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a3) (2026-11-25)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.4.0a2...0.4.0a3)
+
+**Merged pull requests:**
+
+- test: the missing-espyak mock raises for espyak only [\#27](https://github.com/TigreGotico/scriptconv-copyleft/pull/27) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.0a2](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a2) (2026-11-25)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.4.0a1...0.4.0a2)
