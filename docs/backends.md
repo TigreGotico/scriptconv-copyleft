@@ -389,5 +389,4 @@ scriptconv [readings page](https://github.com/TigreGotico/scriptconv/blob/dev/do
 explains where the readings fit. Licence: pykakasi is GPL-3.0-or-later.
 
 ---
-
-[Index](index.md) · Previous: [How it works](how-it-works.md) · Next: [Licences](licences.md)
+[← Prev](how-it-works.md) · [Home](index.md) · [Next →](licences.md)

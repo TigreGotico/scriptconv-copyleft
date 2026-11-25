@@ -86,5 +86,4 @@ both CC-BY-4.0. The manual corrections of Reginutė are GPL-3.0-only. The wheel
 carries the licence files that `license-files` in `pyproject.toml` names.
 
 ---
-
-[Index](index.md) · Previous: [Backend reference](backends.md) · Next: [Index](index.md)
+[← Prev](backends.md) · [Home](index.md)

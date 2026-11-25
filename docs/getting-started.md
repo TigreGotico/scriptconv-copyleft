@@ -115,5 +115,4 @@ package. The [backend reference](backends.md) lists every backend, its extra
 and its downloads.
 
 ---
-
-[Index](index.md) · Previous: [Index](index.md) · Next: [How it works](how-it-works.md)
+[Home](index.md) · [Next →](how-it-works.md)

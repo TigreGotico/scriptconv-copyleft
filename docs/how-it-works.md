@@ -132,5 +132,4 @@ the backend. The scriptconv
 explains the contract, the registry and the revision.
 
 ---
-
-[Index](index.md) · Previous: [Getting started](getting-started.md) · Next: [Backend reference](backends.md)
+[← Prev](getting-started.md) · [Home](index.md) · [Next →](backends.md)
