@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a1) (2026-11-25)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.3a1...0.4.0a1)
+
+**Merged pull requests:**
+
+- feat\(misaki\): misaki English takes Alphabet.MISAKI [\#23](https://github.com/TigreGotico/scriptconv-copyleft/pull/23) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.3.3a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.3.3a1) (2026-11-24)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.2a1...0.3.3a1)
