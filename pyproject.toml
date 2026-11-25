@@ -16,7 +16,7 @@ license-files = [
     "scriptconv_copyleft/phonemizers/_vendored/reginute/COPYING",
     "scriptconv_copyleft/phonemizers/_vendored/reginute/LICENSE",
 ]
-dependencies = ["scriptconv[phonemizers]>=0.0.4a113"]
+dependencies = ["scriptconv[phonemizers]>=0.0.4a161"]
 authors = [
     { name = "TigreGotico", email = "contact@tigregotico.com" }
 ]

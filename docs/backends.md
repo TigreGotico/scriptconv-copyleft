@@ -157,8 +157,12 @@ The alphabets:
 - `misaki_ko` writes Hangul with the sound changes applied, so it takes only
   `Alphabet.HANGUL`. Pass that alphabet to `get_phonemizer`, because its
   default is IPA.
-- The other languages write IPA. English `en-GB` loads the British lexicon of
-  misaki, and `en-US` the American one.
+- `misaki_en` writes the misaki codes: IPA with `A`, `I`, `O`, `Q`, `W`, `Y` for
+  diphthongs and `ʤ`, `ʧ` for affricates. It takes `Alphabet.MISAKI`, which
+  names those codes, or `Alphabet.IPA`, which gives the same output. Any other
+  alphabet raises ValueError. `en-GB` loads the British lexicon of misaki, and
+  `en-US` the American one.
+- The other languages write IPA.
 
 The Japanese reader of misaki is cutlet on fugashi. misaki imports the
 `pyopenjtalk` module, and the `misaki` extra installs it from
