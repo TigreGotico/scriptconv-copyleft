@@ -42,10 +42,16 @@ class TestIdentity:
 
     def test_a_preferred_port_that_is_missing_reports_the_binary(self):
         banner = "eSpeak NG text-to-speech: 1.52.0  Data at: /usr/share/espeak-ng-data"
-        missing = metadata.PackageNotFoundError("espyak")
+        real_version = metadata.version
+
+        def version(name):
+            if name == "espyak":
+                raise metadata.PackageNotFoundError(name)
+            return real_version(name)
+
         with mock.patch.object(EspeakPhonemizer, "_has_binary", return_value=True), \
                 mock.patch.object(EspeakPhonemizer, "_run_espeak_command", return_value=banner), \
-                mock.patch("scriptconv_copyleft.phonemizers.mul.metadata.version", side_effect=missing):
+                mock.patch("scriptconv_copyleft.phonemizers.mul.metadata.version", side_effect=version):
             identity = EspeakPhonemizer(prefer_espyak=True).identity("pt")
         assert (identity.distribution, identity.version) == ("espeak-ng", "1.52.0")
 
