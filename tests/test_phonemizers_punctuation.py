@@ -314,7 +314,8 @@ class TestKeepPunctuation:
         assert unicode.phonemize_to_list(text, "pt") == expected
         assert unicode.phonemize(text, "pt") == [expected]
 
-    @pytest.mark.parametrize("text", ["16:30", "10,4", "Às 16:30! Já."])
+    @pytest.mark.parametrize("text", ["16:30", "10,4", pytest.param("Às 16:30! Já.", marks=pytest.mark.xfail(
+        strict=True, reason="https://github.com/TigreGotico/scriptconv-copyleft/issues/25"))])
     def test_espeak_reads_a_mark_between_digits_as_written(self, espeak, text):
         # espeak-ng prints no line break inside "16:30" or "10,4"
         espeak.keep_punctuation = True
