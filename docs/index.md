@@ -8,10 +8,28 @@ verify: diff <(ls docs/*.md | xargs -n1 basename | grep -v '^index.md$' | sort) 
 see: README.md, AGENTS.md
 -->
 
-This index lists every page in reading order. scriptconv-copyleft holds the
-scriptconv phonemizer backends with a copyleft licence in their chain. The
-pages explain how to install them, how scriptconv finds them, what each one
-does, and which licence each one carries.
+`scriptconv-copyleft` holds the 18 scriptconv phonemizer backends that have a
+copyleft licence (GPL, LGPL or AGPL) in their code or their dependencies. You
+call them through scriptconv as usual.
+
+## Quickstart
+
+```bash
+uv pip install --prerelease=allow "scriptconv[espeak]"
+```
+
+```python
+>>> from scriptconv.phonemizers import Phonemizer, get_phonemizer
+>>> get_phonemizer(Phonemizer.ESPEAK).phonemize_string("olá mundo", "pt")
+'ɔlˈa mˈũŋdʊ'
+
+```
+
+## Pages
+
+This index lists every page in reading order. The pages explain how to
+install the backends, how scriptconv finds them, what each one does, and
+which licence each one carries.
 
 1. **[getting-started.md](getting-started.md)**: install a backend through
    its scriptconv extra, phonemize a text, see which engine ran, and import a
@@ -28,7 +46,3 @@ does, and which licence each one carries.
 The [scriptconv documentation](https://github.com/TigreGotico/scriptconv/tree/dev/docs)
 explains the phonemizer contract, the registry, the other backends and the
 text frontend.
-
----
-
-[Index](index.md) · Previous: [README](../README.md) · Next: [Getting started](getting-started.md)
