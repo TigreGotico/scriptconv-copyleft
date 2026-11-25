@@ -534,8 +534,17 @@ class MisakiPhonemizer(BasePhonemizer):
 # (sharing the dispatch base). The base class above remains a back-compat
 # dispatcher for the legacy ``misaki`` phoneme type.
 class MisakiEnPhonemizer(MisakiPhonemizer):
-    """misaki English (curated us/gb lexicons + spacy; espeak only as OOV fallback)."""
+    """misaki English (curated us/gb lexicons + spacy; espeak only as OOV fallback).
+
+    misaki writes IPA with its own codes for diphthongs and affricates (``A``, ``I``,
+    ``O``, ``ʤ``). ``Alphabet.MISAKI`` names those codes; ``Alphabet.IPA`` gives the
+    same output, as the voices trained on it expect.
+    """
     MISAKI_LANGS = ['en-US', 'en-GB']
+
+    def __init__(self, alphabet: Alphabet = Alphabet.IPA):
+        _check_alphabet(self, alphabet, [Alphabet.IPA, Alphabet.MISAKI])
+        super().__init__(alphabet)
 
 
 class MisakiJaPhonemizer(MisakiPhonemizer):
