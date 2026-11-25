@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0a2](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a2) (2026-11-25)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.4.0a1...0.4.0a2)
+
+**Merged pull requests:**
+
+- test: read the identity revision without the scriptconv hash format [\#24](https://github.com/TigreGotico/scriptconv-copyleft/pull/24) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.0a1](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a1) (2026-11-25)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.3.3a1...0.4.0a1)
