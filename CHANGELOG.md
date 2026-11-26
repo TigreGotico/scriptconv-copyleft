@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0a6](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a6) (2026-11-26)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.4.0a5...0.4.0a6)
+
+**Merged pull requests:**
+
+- docs: three backends.md examples as doctests [\#29](https://github.com/TigreGotico/scriptconv-copyleft/pull/29) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.0a5](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a5) (2026-11-26)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.4.0a4...0.4.0a5)
