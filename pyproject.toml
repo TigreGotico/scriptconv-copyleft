@@ -43,7 +43,7 @@ ja = ["pykakasi>=2.3,<3"]
 ja-phonemizers = ["pykakasi>=2.3,<3", "pyopenjtalk-plus[onnxruntime]>=0.4.1.post10"]
 th = ["tltk>=1.6.8,<1.11", "pandas>=2", "requests>=2", "unicode-rbnf>=2.4.0"]
 ko = ["g2pk; python_version<'3.13'", "regex"]
-test = ["pytest", "pytest-timeout", "espyak", "pycotovia", "ahotts_g2p", "pykakasi>=2.3,<3", "epitran>=1.26.1", "g2pk; python_version<'3.13'", "regex", "misaki[en,ko,vi,zh]; python_version<'3.13'", "vietnam-number; python_version<'3.13'", "fugashi; python_version<'3.13'", "jaconv; python_version<'3.13'", "mojimoji; python_version<'3.13'", "unidic-lite; python_version<'3.13'", "spacy>=3.7,<4.0; python_version<'3.13'", "linguatag[langcodes]>=0.2.3a1", "packaging", "pyopenjtalk-plus[onnxruntime]>=0.4.1.post10", "tltk>=1.6.8,<1.11", "pandas>=2", "requests>=2", "unicode-rbnf>=2.4.0"]
+test = ["pytest", "pytest-timeout", "transphone", "pip", "espyak", "pycotovia", "ahotts_g2p", "pykakasi>=2.3,<3", "epitran>=1.26.1", "g2pk; python_version<'3.13'", "regex", "misaki[en,ko,vi,zh]; python_version<'3.13'", "vietnam-number; python_version<'3.13'", "fugashi; python_version<'3.13'", "jaconv; python_version<'3.13'", "mojimoji; python_version<'3.13'", "unidic-lite; python_version<'3.13'", "spacy>=3.7,<4.0; python_version<'3.13'", "linguatag[langcodes]>=0.2.3a1", "packaging", "pyopenjtalk-plus[onnxruntime]>=0.4.1.post10", "tltk>=1.6.8,<1.11", "pandas>=2", "requests>=2", "unicode-rbnf>=2.4.0"]
 
 [project.urls]
 Homepage = "https://github.com/TigreGotico/scriptconv-copyleft"

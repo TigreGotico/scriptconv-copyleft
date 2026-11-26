@@ -13,3 +13,6 @@ jobs:
       install_extras: 'test'
       system_deps: 'espeak-ng'
       test_path: 'tests'
+      # transphone and spaCy print their model downloads to stdout on first use,
+      # which the docs examples test reads as output. One run downloads them.
+      pre_test_command: 'python -m doctest docs/backends.md > /dev/null || true'

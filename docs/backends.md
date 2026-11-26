@@ -107,10 +107,10 @@ transphone. It has no parameters. It builds one transphone tokenizer for each
 language on first use:
 
 ```python
-from scriptconv.phonemizers import Phonemizer, get_phonemizer
+>>> from scriptconv.phonemizers import Phonemizer, get_phonemizer
+>>> get_phonemizer(Phonemizer.TRANSPHONE).phonemize_string("hello world", "eng")
+'hʌlow wɹ̩ld'
 
-get_phonemizer(Phonemizer.TRANSPHONE).phonemize_string("hello world", "eng")
-# 'hʌlow wɹ̩ld'
 ```
 
 The `transphone` extra also installs jieba, pypinyin, unidic-lite and pip.
@@ -143,10 +143,10 @@ Warning: en_callable is None, so English may be removed
 ```
 
 ```python
-from scriptconv.phonemizers import Phonemizer, get_phonemizer
+>>> from scriptconv.phonemizers import Phonemizer, get_phonemizer
+>>> get_phonemizer(Phonemizer.MISAKI_EN).phonemize_string("Hello world", "en-US")
+'həlˈO wˈɜɹld'
 
-get_phonemizer(Phonemizer.MISAKI_EN).phonemize_string("Hello world", "en-US")
-# 'həlˈO wˈɜɹld'
 ```
 
 The alphabets:
@@ -271,10 +271,10 @@ ships a GPL-3.0 text, so this package treats it as GPL. TLTK also pulls gensim
 and a spaCy model that it holds. Building the backend takes some seconds.
 
 ```python
-from scriptconv.phonemizers import Phonemizer, get_phonemizer
+>>> from scriptconv.phonemizers import Phonemizer, get_phonemizer
+>>> get_phonemizer(Phonemizer.G2PFA).phonemize_string("سلام دنیا", "fa")
+'sælɒːme doniːɒː'
 
-get_phonemizer(Phonemizer.G2PFA).phonemize_string("سلام دنیا", "fa")
-# 'sælɒːme doniːɒː'
 ```
 
 The class accepts `Alphabet.IPA` and `Alphabet.ERAAB`, but both give IPA
