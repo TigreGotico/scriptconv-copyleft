@@ -13,3 +13,6 @@ jobs:
       install_extras: 'test'
       system_deps: 'espeak-ng'
       test_path: 'tests'
+      # transphone prints its model download to stdout on first use, which the
+      # docs examples test reads as output.
+      pre_test_command: 'python -c "from scriptconv.phonemizers import Phonemizer, get_phonemizer; get_phonemizer(Phonemizer.TRANSPHONE).phonemize_string(\"hello world\", \"eng\")"'
