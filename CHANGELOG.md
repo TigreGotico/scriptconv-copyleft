@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0a5](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a5) (2026-11-26)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.4.0a4...0.4.0a5)
+
+**Merged pull requests:**
+
+- test: run the docs examples in CI [\#28](https://github.com/TigreGotico/scriptconv-copyleft/pull/28) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.0a4](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a4) (2026-11-25)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.4.0a3...0.4.0a4)
