@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0a7](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a7) (2026-11-26)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.4.0a6...0.4.0a7)
+
+**Merged pull requests:**
+
+- test: strict xfail names AssertionError [\#30](https://github.com/TigreGotico/scriptconv-copyleft/pull/30) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.0a6](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a6) (2026-11-26)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.4.0a5...0.4.0a6)
