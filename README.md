@@ -33,23 +33,9 @@ through the install, the alphabets and the engine identity.
 
 ## Backends
 
-| `Phonemizer` values | scriptconv extra |
-| --- | --- |
-| `espeak`, `espeak_lt_accent` | `espeak` |
-| `transphone` | `transphone` |
-| `misaki`, `misaki_en`, `misaki_ja`, `misaki_zh`, `misaki_ko`, `misaki_vi` | `misaki` |
-| `cotovia` | `gl` |
-| `ahotts` | `eu` |
-| `hebrew_ipa` | `he` |
-| `tltk` | `th` |
-| `g2pfa` | `fa` |
-| `pykakasi`, `openjtalk_prosody` | `ja-phonemizers` |
-| `g2pk`, `kog2p` | `ko` |
-
-The package also holds the Japanese kanji-to-kana readings that
-`scriptconv.readings` gives, through the `ja` extra. The
-[backend reference](docs/backends.md) gives the languages, alphabets,
-parameters, licence and downloads of each backend.
+The package holds the `espeak`, `transphone`, `misaki`, `cotovia`, `ahotts`,
+`hebrew_ipa`, `tltk`, `g2pfa`, `pykakasi`, `openjtalk_prosody`, `g2pk` and
+`kog2p` backends, and the Japanese kanji-to-kana readings.
 
 ## Licence
 
@@ -64,6 +50,10 @@ backend and the licence of each file.
 
 ## Documentation
 
-The [documentation index](docs/index.md) lists every page in reading order.
-The [scriptconv documentation](https://github.com/TigreGotico/scriptconv/tree/dev/docs)
-explains the phonemizer contract and the other backends.
+| Page | Read it for |
+| --- | --- |
+| [docs/getting-started.md](docs/getting-started.md) | install, the alphabets, the engine identity |
+| [docs/how-it-works.md](docs/how-it-works.md) | how scriptconv finds and imports these backends |
+| [docs/backends.md](docs/backends.md) | the extra, languages, alphabets and parameters of each backend |
+| [docs/licences.md](docs/licences.md) | the copyleft item of each backend, the licence of each file |
+| [docs/index.md](docs/index.md) | every page in reading order |
