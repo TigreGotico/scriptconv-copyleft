@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0a9](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a9) (2026-11-28)
+
+[Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.4.0a8...0.4.0a9)
+
+**Merged pull requests:**
+
+- ci: add docs standard check [\#32](https://github.com/TigreGotico/scriptconv-copyleft/pull/32) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.0a8](https://github.com/TigreGotico/scriptconv-copyleft/tree/0.4.0a8) (2026-11-27)
 
 [Full Changelog](https://github.com/TigreGotico/scriptconv-copyleft/compare/0.4.0a7...0.4.0a8)
